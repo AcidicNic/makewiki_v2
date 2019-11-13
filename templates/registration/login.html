@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Login{% endblock %}
+
 {% block content %}
     <h3>Log In <small class="text-muted">to create your own wiki pages!</small></h3>
     <hr>
@@ -35,6 +37,11 @@
                     <div class="col-8">
                         <input type="submit" value="login" class="btn btn-success">
                         <input type="hidden" name="next" value="{{ next }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8">
+                        <a href="{% url 'password_reset' %}" class="btn btn-secondary ml-2">Forgot Password?</a>
                     </div>
                 </div>
             </form>
