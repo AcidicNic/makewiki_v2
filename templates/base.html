@@ -13,8 +13,10 @@
       <a class="navbar-brand" href="{% url 'wiki-list-page' %}"><i class="fas fa-fw fa-book"></i> makewiki</a>
       <form class="form-inline ml-auto">
         {% if user.is_authenticated %}
-          <div class="text-white">Hello, <strong>{{ user.username }}</strong>!</div>
-          <a href="#" class="btn btn-success ml-4">New Page</a>
+          <div class="text-white">Hello, <strong>{{ user.username }}</strong>! {% if user.is_superuser %}(admin){% endif %}</div>
+          {% if user.is_superuser %}
+            <a href="/admin/wiki/page/add/" class="btn btn-success ml-4">New Page</a>
+          {% endif %}
           <a href="{% url 'logout' %}" class="btn btn-danger ml-2">Log Out</a>
         {% else %}
           <div class="text-white">Welcome!</div>
